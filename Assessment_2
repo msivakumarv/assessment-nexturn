@@ -1,0 +1,135 @@
+db.customers.insertMany([
+    { 
+        _id: ObjectId('64d5ff1b1285b57f1c3f6b93'),
+        full_name: "Arun Kumar", 
+        email_address: "arun.kumar@example.com", 
+        home_address: { street_address: "12 Gandhi Nagar", city_name: "Mumbai", postal_code: "400001" }, 
+        contact_number: "987-1234567", 
+        sign_up_date: new Date("2023-01-10T12:00:00Z") 
+    },
+    { 
+        _id: ObjectId('64d5ff1b1285b57f1c3f6b94'),
+        full_name: "Priya Sharma", 
+        email_address: "priya.sharma@example.com", 
+        home_address: { street_address: "34 Shivaji Colony", city_name: "Pune", postal_code: "411027" }, 
+        contact_number: "987-2345678", 
+        sign_up_date: new Date("2023-02-18T12:00:00Z") 
+    },
+    { 
+        _id: ObjectId('64d5ff1b1285b57f1c3f6b95'),
+        full_name: "Amit Reddy", 
+        email_address: "amit.reddy@example.com", 
+        home_address: { street_address: "56 MG Road", city_name: "Hyderabad", postal_code: "500062" }, 
+        contact_number: "987-3456789", 
+        sign_up_date: new Date("2023-03-25T12:00:00Z") 
+    },
+    { 
+        _id: ObjectId('64d5ff1b1285b57f1c3f6b96'),
+        full_name: "Neha Patel", 
+        email_address: "neha.patel@example.com", 
+        home_address: { street_address: "78 Vasant Vihar", city_name: "Ahmedabad", postal_code: "380008" }, 
+        contact_number: "987-4567890", 
+        sign_up_date: new Date("2023-04-05T12:00:00Z") 
+    },
+    { 
+        _id: ObjectId('64d5ff1b1285b57f1c3f6b97'),
+        full_name: "Rajesh Singh", 
+        email_address: "rajesh.singh@example.com", 
+        home_address: { street_address: "90 New Friends Colony", city_name: "Delhi", postal_code: "110025" }, 
+        contact_number: "987-5678901", 
+        sign_up_date: new Date("2023-05-12T12:00:00Z") 
+    }
+]);
+
+db.orders.insertMany([
+    {
+        order_identifier: "ODR001",
+        customer_id: ObjectId('64d5ff1b1285b57f1c3f6b93'),
+        order_date: "2023-05-15",
+        status: "shipped",
+        purchased_items: [
+            { product_name: "Laptop", quantity_ordered: 1, unit_cost: 1500 },
+            { product_name: "Mouse", quantity_ordered: 2, unit_cost: 25 }
+        ],
+        total_payment: 1550
+    },
+    {
+        order_identifier: "ODR002",
+        customer_id: ObjectId('64d5ff1b1285b57f1c3f6b94'),
+        order_date: "2023-06-01",
+        status: "pending",
+        purchased_items: [
+            { product_name: "Tablet", quantity_ordered: 1, unit_cost: 300 }
+        ],
+        total_payment: 300
+    },
+    {
+        order_identifier: "ODR003",
+        customer_id: ObjectId('64d5ff1b1285b57f1c3f6b95'),
+        order_date: "2023-06-10",
+        status: "delivered",
+        purchased_items: [
+            { product_name: "Keyboard", quantity_ordered: 1, unit_cost: 100 },
+            { product_name: "Monitor", quantity_ordered: 1, unit_cost: 200 }
+        ],
+        total_payment: 300
+    },
+    {
+        order_identifier: "ODR004",
+        customer_id: ObjectId('64d5ff1b1285b57f1c3f6b96'),
+        order_date: "2023-06-20",
+        status: "shipped",
+        purchased_items: [
+            { product_name: "Smartphone", quantity_ordered: 1, unit_cost: 800 }
+        ],
+        total_payment: 800
+    },
+    {
+        order_identifier: "ODR005",
+        customer_id: ObjectId('64d5ff1b1285b57f1c3f6b97'),
+        status: "processing",
+        purchased_items: [
+            { product_name: "Headphones", quantity_ordered: 1, unit_cost: 50 },
+            { product_name: "Charger", quantity_ordered: 1, unit_cost: 20 }
+        ],
+        total_payment: 70
+    }
+]);
+
+db.orders.find({ customer_id: ObjectId('64d5ff1b1285b57f1c3f6b93') });
+
+db.customers.findOne({ _id: ObjectId('64d5ff1b1285b57f1c3f6b93') });
+
+db.orders.updateOne(
+    { order_identifier: "ODR001" },
+    { $set: { status: "delivered" } }
+);
+
+db.orders.deleteOne({ order_identifier: "ODR001" });
+
+db.orders.aggregate([
+    { $group: { _id: "$customer_id", total_spent: { $sum: "$total_payment" } } },
+    { $lookup: { from: "customers", localField: "_id", foreignField: "_id", as: "customer_details" } },
+    { $unwind: "$customer_details" },
+    { $project: { full_name: "$customer_details.full_name", total_spent: 1 } }
+]);
+
+db.orders.aggregate([
+    { $group: { _id: "$status", order_count: { $sum: 1 } } }
+]);
+
+db.orders.aggregate([
+    { $sort: { order_date: -1 } },
+    { $group: { _id: "$customer_id", latest_order: { $first: "$$ROOT" } } },
+    { $lookup: { from: "customers", localField: "_id", foreignField: "_id", as: "customer_details" } },
+    { $unwind: "$customer_details" },
+    { $project: { full_name: "$customer_details.full_name", email_address: "$customer_details.email_address", order_identifier: "$latest_order.order_identifier", total_payment: "$latest_order.total_payment" } }
+]);
+
+db.orders.aggregate([
+    { $sort: { total_payment: -1 } },
+    { $group: { _id: "$customer_id", top_order: { $first: "$$ROOT" } } },
+    { $lookup: { from: "customers", localField: "_id", foreignField: "_id", as: "customer_details" } },
+    { $unwind: "$customer_details" },
+    { $project: { full_name: "$customer_details.full_name", email_address: "$customer_details.email_address", order_identifier: "$top_order.order_identifier", total_payment: "$top_order.total_payment" } }
+]);
