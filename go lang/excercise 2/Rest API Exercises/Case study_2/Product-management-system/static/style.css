@@ -1,0 +1,47 @@
+body {
+    font-family: 'Times New Roman', Times, serif, sans-serif;
+    background-color: #f9f9f9;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin: 20px auto;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form button {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 2px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+button {
+    background-color: rgb(7, 105, 7);
+    color: white;
+    border: none;
+    padding: 10px;
+}
+
+a {
+    color: rgb(163, 1, 1);
+    text-decoration: none;
+}
