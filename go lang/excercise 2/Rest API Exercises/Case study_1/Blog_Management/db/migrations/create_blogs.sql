@@ -1,7 +1,0 @@
-CREATE TABLE blogs (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	title TEXT NOT NULL,
-	content TEXT NOT NULL,
-	author TEXT NOT NULL,
-	timestamp TEXT NOT NULL
-);
