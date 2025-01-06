@@ -1,0 +1,119 @@
+Agile Manifesto Exercise
+
+Case Study: Developing an Agile Manifesto with a Student Project
+
+Background
+A group of software engineering students has been tasked with creating a digital Agile Manifesto as part of their semester project. This exercise is designed to simulate the Agile development process, allowing the students to practice Agile principles, roles, and ceremonies.
+
+The team will work collaboratively, applying Agile methodologies such as Epics, Features/Stories, Sprints, Story Points, and Subtasks to successfully complete the project.
+
+Project Objective
+The goal is to develop a web-based Agile Manifesto platform where users can:
+
+1.Learn about the core values and principles of Agile.
+2.Access interactive examples and resources.
+3.Collaborate and exchange ideas on Agile methodologies.
+
+Step-by-Step Plan
+1. Project Kickoff
+The instructor assumes the role of the Product Owner and provides the following requirements:
+
+A homepage that explains the Agile Manifesto.
+Interactive content for exploring Agile values and principles.
+A resource library featuring Agile practices such as Scrum and Kanban.
+Collaboration tools, including a discussion forum or comment section.
+The team organizes a kickoff meeting to:
+
+Clarify the project’s objectives.
+Assign roles (Scrum Master, Developers, Tester).
+Define the scope of the project.
+
+2. Epic Creation
+The team establishes the primary Epic for the project:
+Epic: "Develop a web platform to educate and engage users on the Agile Manifesto and its methodologies."
+
+3. Features and Stories Breakdown
+The Epic is divided into Features and Stories as follows:
+
+Feature 1: Homepage for Agile Manifesto
+
+Story 1.1: Design and create an engaging homepage.
+Story 1.2: Add an introduction to Agile and its history.
+Story 1.3: Implement navigation to other sections.
+Feature 2: Agile Values and Principles
+
+Story 2.1: Create a page to showcase the four core Agile values.
+Story 2.2: Implement an interactive module for the 12 principles.
+Story 2.3: Add examples to explain each value and principle.
+Feature 3: Resource Library
+
+Story 3.1: Design a library for Agile practices like Scrum and Kanban.
+Story 3.2: Include downloadable resources such as templates and guides.
+Story 3.3: Add search and filter capabilities.
+Feature 4: Collaboration Tools
+
+Story 4.1: Create a user discussion forum.
+Story 4.2: Add commenting functionality for resources and principles.
+Story 4.3: Implement user authentication for collaborative features.
+
+4. Sprint Planning
+The project is divided into four 2-week Sprints:
+
+Sprint 1: Build the Agile Manifesto homepage.
+Sprint 2: Develop the Agile Values and Principles section.
+Sprint 3: Create the Resource Library.
+Sprint 4: Implement Collaboration Tools and finalize testing.
+The team uses Planning Poker to estimate Story Points:
+
+Small tasks: 1–2 points.
+Medium tasks: 3–5 points.
+Large tasks: 8–13 points.
+
+5. Subtasks for Stories
+Each Story is broken into smaller, actionable Subtasks. Examples:
+
+Story 1.1: Design and create an engaging homepage
+
+Subtask 1.1.1: Create wireframes for the homepage.
+Subtask 1.1.2: Develop the layout using HTML and CSS.
+Subtask 1.1.3: Add animations using JavaScript.
+Subtask 1.1.4: Conduct user testing and incorporate feedback.
+Story 4.2: Add commenting functionality for resources and principles
+
+Subtask 4.2.1: Design the comment input field and user interface.
+Subtask 4.2.2: Create backend APIs for comment storage.
+Subtask 4.2.3: Integrate APIs with the frontend.
+Subtask 4.2.4: Test and refine the comment functionality.
+
+6. Daily Stand-ups
+The team conducts daily 15-minute stand-up meetings to discuss:
+
+Progress made the previous day.
+Planned tasks for the day.
+Any challenges or blockers.
+
+7. Sprint Reviews
+At the end of each Sprint, the team presents their progress to the Product Owner (instructor). Feedback is collected and integrated into the subsequent Sprint.
+
+8. Sprint Retrospectives
+After each Sprint, the team holds a retrospective to evaluate:
+
+Successes during the Sprint.
+Areas for improvement.
+Actionable changes for the next Sprint.
+
+9. Final Delivery
+After the fourth Sprint, the team delivers the final platform, which includes:
+
+A fully developed and polished homepage.
+Interactive pages for Agile values and principles.
+A resource library with search and filter features.
+Collaboration tools like a discussion forum and comments, with user authentication.
+Lessons Learned
+Through this project, I gained practical experience in:
+
+Breaking down complex projects into manageable parts using Epics, Features, and Stories.
+Estimating effort and prioritizing tasks with Story Points.
+Collaborating effectively through Agile ceremonies and communication.
+Iterative development and continuous improvement.
+Gathering and incorporating feedback from stakeholders for better outcomes.
